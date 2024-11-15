@@ -48,19 +48,22 @@ export const User = sequelize.define('users',{
     },
   });
 
-//Relacion uno a muchos para usuario con tareas
-User.hasMany(Task, {
-  foreignKey: 'userId',
-  sourceKey: 'id'
-});
+// //Relacion uno a muchos para usuario con tareas
+// User.hasMany(Task, {
+//   foreignKey: 'userId',   // Define 'userId' como clave foránea en Task
+//   sourceKey: 'id',         // Se usa el 'id' de User como clave primaria
+//   onDelete: 'CASCADE',  // Elimina las tareas relacionadas si se elimina el usuario
+//   onUpdate: 'CASCADE'   // Actualiza 'userId' si el 'id' de User cambia
+// });
 
-Task.belongsTo(User, {
-  foreignKey: 'user.id',
-  targetKey: 'id'
-});
+// Task.belongsTo(User, {
+//   foreignKey: 'userId',   // La misma clave foránea usada en 'hasMany' para asegurar consistencia
+//   targetKey: 'id'         // Relaciona 'id' de User como el objetivo de la relación
+// });
 
-// User.hasMany(Task);
-// Task.belongsToMany(User);
+User.hasMany(Task);
+Task.belongsTo(User);
+
 
 //Encripctar password
 User.beforeCreate(async (user) => {
