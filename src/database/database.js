@@ -7,13 +7,14 @@ export let sequelize = new Sequelize(
     process.env.DB_PASSWORD,
     {
         host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
         dialect: process.env.DB_DIALENCT,
         logging: console.log, 
-        // dialectOptions: {
-        //     ssl: {
-        //         requires: true,
-        //         rejectUnauthorized: false, // for self-signed certificates
-        //     }
-        // }
+        dialectOptions: {
+            ssl: {
+                requires: true,
+                rejectUnauthorized: false, // for self-signed certificates
+            }
+        }
     }
 );

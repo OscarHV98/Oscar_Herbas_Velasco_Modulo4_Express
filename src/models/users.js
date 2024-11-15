@@ -53,6 +53,7 @@ User.hasMany(Task, {
   foreignKey: 'userId',
   sourceKey: 'id'
 });
+
 Task.belongsTo(User, {
   foreignKey: 'user.id',
   targetKey: 'id'
