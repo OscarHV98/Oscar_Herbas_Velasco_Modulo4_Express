@@ -1,4 +1,4 @@
-import { app } from "./app.js";
+import app from "./app.js";
 import { sequelize } from "./database/database.js";
 import 'dotenv/config'
 import logger from "./logs/logger.js";

@@ -9,11 +9,11 @@ export let sequelize = new Sequelize(
         host: process.env.DB_HOST,
         dialect: process.env.DB_DIALENCT,
         logging: console.log, 
-        dialectOptions: {
-            ssl: {
-                requires: true,
-                rejectUnauthorized: false, // for self-signed certificates
-            }
-        }
+        // dialectOptions: {
+        //     ssl: {
+        //         requires: true,
+        //         rejectUnauthorized: false, // for self-signed certificates
+        //     }
+        // }
     }
 );
