@@ -1,6 +1,7 @@
 import logger from "../logs/logger.js";
 import { User } from "../models/users.js";
 import { Task } from "../models/tasks.js";
+import { encriptar } from "../common/bycritp.js";
 
 const getUsers = async (req, res) => {
     try {
@@ -48,10 +49,18 @@ const updateUser = async (req, res) => {
             return res
                 .status(400)
                 .json({ message: "Username or password are required" });
+    
+        // Encriptar la contraseña manualmente
+        const encryptedPassword = await encriptar(password);        
 
-        const user = await User.update({ username, password }, { where: { id } });
+        const user = await User.update(
+            { username, password: encryptedPassword },
+            { where: { id } }
+        );
+
         res.json(user);
-    } catch (error) {
+    } 
+    catch (error) {
         logger.error("Error createUser: " + error);
         res.status(500).json({ message: error.message });
     }

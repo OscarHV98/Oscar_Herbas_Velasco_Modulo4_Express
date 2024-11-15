@@ -13,6 +13,7 @@ app.use(morgan('dev'));
 app.use(express.json()); // GET, POST, PUT, DELETE
 
 //Routes
+
 app.use('/api/login', authRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/tasks', authenticateToken, tasksRoutes);
